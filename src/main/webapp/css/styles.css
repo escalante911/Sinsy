@@ -41,6 +41,12 @@
   --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 }
 
+#sinsy{
+  font-family: Ethonocentric;
+  font-size: 40px;
+
+}
+
 *,
 *::before,
 *::after {
@@ -80,6 +86,7 @@ hr {
 }
 
 h1, h2, h3, h4, h5, h6 {
+  font-family: counter;
   margin-top: 0;
   margin-bottom: 0.5rem;
 }
