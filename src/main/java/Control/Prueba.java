@@ -5,7 +5,7 @@
  */
 package Control;
 
-import entities.Categorias;
+import Entidades.Categorias;
 
 /**
  *

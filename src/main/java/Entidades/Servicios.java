@@ -3,23 +3,21 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package entities;
+package Entidades;
 
 import java.io.Serializable;
-import java.util.List;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.MappedSuperclass;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -28,14 +26,14 @@ import javax.xml.bind.annotation.XmlTransient;
 @MappedSuperclass
 @Table(catalog = "sinsy", schema = "")
 @XmlRootElement
-public class Categorias implements Serializable {
+public class Servicios implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "id_categoria", nullable = false)
-    private Integer idCategoria;
+    @Column(name = "id_servicio", nullable = false)
+    private Integer idServicio;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 50)
@@ -46,28 +44,29 @@ public class Categorias implements Serializable {
     @Size(min = 1, max = 200)
     @Column(nullable = false, length = 200)
     private String descripcion;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "categoria")
-    private List<Servicios> serviciosList;
+    @JoinColumn(name = "categoria", referencedColumnName = "id_categoria", nullable = false)
+    @ManyToOne(optional = false)
+    private Categorias categoria;
 
-    public Categorias() {
+    public Servicios() {
     }
 
-    public Categorias(Integer idCategoria) {
-        this.idCategoria = idCategoria;
+    public Servicios(Integer idServicio) {
+        this.idServicio = idServicio;
     }
 
-    public Categorias(Integer idCategoria, String nombre, String descripcion) {
-        this.idCategoria = idCategoria;
+    public Servicios(Integer idServicio, String nombre, String descripcion) {
+        this.idServicio = idServicio;
         this.nombre = nombre;
         this.descripcion = descripcion;
     }
 
-    public Integer getIdCategoria() {
-        return idCategoria;
+    public Integer getIdServicio() {
+        return idServicio;
     }
 
-    public void setIdCategoria(Integer idCategoria) {
-        this.idCategoria = idCategoria;
+    public void setIdServicio(Integer idServicio) {
+        this.idServicio = idServicio;
     }
 
     public String getNombre() {
@@ -86,30 +85,29 @@ public class Categorias implements Serializable {
         this.descripcion = descripcion;
     }
 
-    @XmlTransient
-    public List<Servicios> getServiciosList() {
-        return serviciosList;
+    public Categorias getCategoria() {
+        return categoria;
     }
 
-    public void setServiciosList(List<Servicios> serviciosList) {
-        this.serviciosList = serviciosList;
+    public void setCategoria(Categorias categoria) {
+        this.categoria = categoria;
     }
 
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (idCategoria != null ? idCategoria.hashCode() : 0);
+        hash += (idServicio != null ? idServicio.hashCode() : 0);
         return hash;
     }
 
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Categorias)) {
+        if (!(object instanceof Servicios)) {
             return false;
         }
-        Categorias other = (Categorias) object;
-        if ((this.idCategoria == null && other.idCategoria != null) || (this.idCategoria != null && !this.idCategoria.equals(other.idCategoria))) {
+        Servicios other = (Servicios) object;
+        if ((this.idServicio == null && other.idServicio != null) || (this.idServicio != null && !this.idServicio.equals(other.idServicio))) {
             return false;
         }
         return true;
@@ -117,7 +115,7 @@ public class Categorias implements Serializable {
 
     @Override
     public String toString() {
-        return "entities.Categorias[ idCategoria=" + idCategoria + " ]";
+        return "entities.Servicios[ idServicio=" + idServicio + " ]";
     }
     
 }

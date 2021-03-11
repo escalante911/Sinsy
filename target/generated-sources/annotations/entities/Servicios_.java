@@ -1,6 +1,7 @@
 package entities;
 
-import entities.Categorias;
+import Entidades.Servicios;
+import Entidades.Categorias;
 import javax.annotation.Generated;
 import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;

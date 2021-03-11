@@ -1,5 +1,7 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="Control.UsersMysql"%>
+<%@page import="Entidades.Users"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -13,28 +15,29 @@
     <h3>Registrate</h3>
     <h4>Ingresa Tus Datos</h4>
     <fieldset>
-      <input placeholder="Cedula" type="text" tabindex="1" required autofocus>
+      <input placeholder="Cedula" name="cedula" type="text" tabindex="1" required autofocus>
     </fieldset>
     <fieldset>
-      <input placeholder="Nombres" type="text" tabindex="2" required>
+      <input placeholder="Nombres" name="nombres" type="text" tabindex="2" required>
     </fieldset>
     <fieldset>
-      <input placeholder="Apellidos" type="text" tabindex="3" required>
+      <input placeholder="Apellidos" name="apellidos" type="text" tabindex="3" required>
     </fieldset>
     <fieldset>
-       <input type="date" id="start" name="trip-start" value="2021-01-01" min="1920-01-01" max="2050-12-31" tabindex="4" required>
+      <input placeholder="Dirección" name="direccion" type="text" tabindex="5" required>
     </fieldset>
     <fieldset>
-      <input placeholder="Dirección" type="text" tabindex="5" required>
+      <input placeholder="Celular" name="celular" type="tel" tabindex="6" required>
     </fieldset>
     <fieldset>
-      <input placeholder="Celular" type="tel" tabindex="6" required>
+      <input placeholder="Correo" name="correo" type="email" tabindex="7" required>
     </fieldset>
     <fieldset>
-      <input placeholder="Correo" type="email" tabindex="7" required>
+        Ingresa el código de aprobación:
+      <input placeholder="Código de Aprobación" type="text" tabindex="7" required>
     </fieldset>
     <fieldset>
-         Contraseña: <input type="password" id="myInput" tabindex="8" required>
+         Contraseña: <input type="password" name="clave" id="myInput" tabindex="8" required>
           <br>
          Confirma Contraseña: <input type="password" id="myInput2" tabindex="9" required>
           <!-- An element to toggle between password visibility -->
@@ -56,6 +59,22 @@
       <button name="submit" type="submit" id="contact-submit" data-submit="...Sending">Registrar</button>
     </fieldset>
   </form>
+          
+          <%
+            UsersMysql us = new UsersMysql();
+            Users u = new Users();
+             if (request.getParameter("submit") != null) {
+                u.setCedula(request.getParameter("cedula"));
+                u.setNombres(request.getParameter("nombres"));
+                u.setApellidos(request.getParameter("apellidos"));
+                u.setDireccion(request.getParameter("direccion"));
+                u.setTelefono(request.getParameter("telefono"));
+                u.setCorreo(request.getParameter("correo"));
+                u.setClave(request.getParameter("clave"));
+                us.insertar(u);
+            }
+              %>
+          
 </div>
         <script src="js/regjs.js"></script>
     </body>

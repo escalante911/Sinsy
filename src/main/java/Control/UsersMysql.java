@@ -6,7 +6,7 @@
 package Control;
 
 import java.util.List;
-import entities.Users;
+import Entidades.Users;
 import java.sql.SQLException;
 
 /**
@@ -31,18 +31,18 @@ public class UsersMysql {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    public String insertar(Users u) {
+    public void insertar(Users u) {
         try {
-	    String consulta ="INSERT INTO users (cedula, nombres, apellidos, nacimimiento, direccion, telefono, correo, clave) VALUES ('"+
-	    u.getCedula()+"','"+u.getNombres()+"','"+u.getApellidos()+"','"+u.getNacimiento()+"','"+u.getDireccion()+"','"+u.getTelefono()+"','"+
+	    String consulta ="INSERT INTO users (cedula, nombres, apellidos, direccion, telefono, correo, clave) VALUES ('"+
+	    u.getCedula()+"','"+u.getNombres()+"','"+u.getApellidos()+"','"+"','"+u.getDireccion()+"','"+u.getTelefono()+"','"+
 	    u.getCorreo()+"','"+u.getClave()+"')";
 	    System.out.println(consulta);
             cn.insert(consulta);
-            return "..";
+            System.out.println("Correcto");
  		    
  		  } catch (SQLException e) {
  		            System.out.println(e.getMessage());
-                            return "er";
+                            System.out.println("Correcto");
  		   //JOptionPane.showMessageDialog(null, "No se Registro la persona");
  		  }
     }
