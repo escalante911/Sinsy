@@ -34,7 +34,7 @@ public class UsersMysql {
     public void insertar(Users u) {
         try {
 	    String consulta ="INSERT INTO users (cedula, nombres, apellidos, direccion, telefono, correo, clave) VALUES ('"+
-	    u.getCedula()+"','"+u.getNombres()+"','"+u.getApellidos()+"','"+"','"+u.getDireccion()+"','"+u.getTelefono()+"','"+
+	    u.getCedula()+"','"+u.getNombres()+"','"+u.getApellidos()+"','"+u.getDireccion()+"','"+u.getTelefono()+"','"+
 	    u.getCorreo()+"','"+u.getClave()+"')";
 	    System.out.println(consulta);
             cn.insert(consulta);
@@ -42,7 +42,7 @@ public class UsersMysql {
  		    
  		  } catch (SQLException e) {
  		            System.out.println(e.getMessage());
-                            System.out.println("Correcto");
+                            System.out.println("Error");
  		   //JOptionPane.showMessageDialog(null, "No se Registro la persona");
  		  }
     }

@@ -12,20 +12,15 @@ import java.sql.*;
  * @author Escalante
  */
 public class Conexion {
-    
-    private Connection con=null;
+  private Connection con=null;
 	private static Conexion db;
 	private Statement statement;
 	
-	// private String url= "jdbc:mysql://localhost:3306/";
-        
-    private String url= "andrew.mi.com.co:2083/cpsess3199279067/3rdparty/phpMyAdmin/db_structure.php?server=1&db=usinsych_sinsy";
+   private String url= "jdbc:mysql://localhost:3306/";
     private String dbName = "sinsy";
     private String driver = "com.mysql.jdbc.Driver";
     private String userName = "root";
     private String password = "";
-    
-    
     
     public String getDriver(){
     	
@@ -167,13 +162,11 @@ public class Conexion {
     }
 	
         
-       
+      /** 
 	public static void main(String args[]){
 		 System.out.println(Conexion.getConexion());
-                 System.out.println(Conexion.getDb());
-                 System.out.println(Conexion.db.getDriver());
 		
 	}
-        /**  */
+       */
     
 }

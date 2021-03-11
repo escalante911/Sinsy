@@ -11,7 +11,7 @@
     </head>
     <body>
       <div class="container">  
-  <form id="contact" action="" method="post" onsubmit="verificarPasswords(); return false">
+  <form id="contact" action="" method="get" onsubmit="verificarPasswords(); return false">
     <h3>Registrate</h3>
     <h4>Ingresa Tus Datos</h4>
     <fieldset>
@@ -51,29 +51,35 @@
          Las Contraseñas no coinciden, vuelve a intentar !
      </div>
      <div id="ok" class="alert alert-success ocultar" role="alert">
-      Las Contraseñas coinciden ! (Procesando formulario ... )
+      Correcto ! (Procesando formulario ... )
        </div>
        <!-- Fin Mensajes de Verificación -->
     
     <fieldset>
-      <button name="submit" type="submit" id="contact-submit" data-submit="...Sending">Registrar</button>
+      <button name="enviar" type="submit" id="contact-submit" data-submit="...Sending">Registrar</button>
     </fieldset>
   </form>
-          
+         
           <%
             UsersMysql us = new UsersMysql();
             Users u = new Users();
-             if (request.getParameter("submit") != null) {
-                u.setCedula(request.getParameter("cedula"));
-                u.setNombres(request.getParameter("nombres"));
-                u.setApellidos(request.getParameter("apellidos"));
-                u.setDireccion(request.getParameter("direccion"));
-                u.setTelefono(request.getParameter("telefono"));
-                u.setCorreo(request.getParameter("correo"));
-                u.setClave(request.getParameter("clave"));
+            u.setCedula(request.getParameter("cedula"));
+            u.setNombres(request.getParameter("nombres"));
+            u.setApellidos(request.getParameter("apellidos"));
+            u.setDireccion(request.getParameter("direccion"));
+            u.setTelefono(request.getParameter("celular"));
+            u.setCorreo(request.getParameter("correo"));
+            u.setClave(request.getParameter("clave"));
+             System.out.println(u.toString());
+             if (request.getParameter("enviar") != null) {
                 us.insertar(u);
+                System.out.println("Ya");
             }
+             else{
+                 System.out.println("No");
+             } 
               %>
+          
           
 </div>
         <script src="js/regjs.js"></script>

@@ -1,4 +1,11 @@
-C:\Users\joescalante\Documents\GitHub\Sinsy\src\main\java\entities\Servicios.java
-C:\Users\joescalante\Documents\GitHub\Sinsy\src\main\java\entities\Users.java
-C:\Users\joescalante\Documents\GitHub\Sinsy\src\main\java\entities\Categorias.java
-C:\Users\joescalante\Documents\GitHub\Sinsy\src\main\java\entities\Clientes.java
+C:\Users\joescalante\Documents\GitHub\Sinsy\src\main\java\Control\ClientesMysql.java
+C:\Users\joescalante\Documents\GitHub\Sinsy\src\main\java\Entidades\Categorias.java
+C:\Users\joescalante\Documents\GitHub\Sinsy\src\main\java\Entidades\Servicios.java
+C:\Users\joescalante\Documents\GitHub\Sinsy\src\main\java\Control\Prueba.java
+C:\Users\joescalante\Documents\GitHub\Sinsy\src\main\java\Control\ServiciosMysql.java
+C:\Users\joescalante\Documents\GitHub\Sinsy\src\main\java\Entidades\Clientes.java
+C:\Users\joescalante\Documents\GitHub\Sinsy\src\main\java\Control\CategoriasMysql.java
+C:\Users\joescalante\Documents\GitHub\Sinsy\src\main\java\Control\Conexion.java
+C:\Users\joescalante\Documents\GitHub\Sinsy\src\main\java\Control\UsersMysql.java
+C:\Users\joescalante\Documents\GitHub\Sinsy\src\main\java\Entidades\Users.java
+C:\Users\joescalante\Documents\GitHub\Sinsy\src\main\java\Control\Function.java

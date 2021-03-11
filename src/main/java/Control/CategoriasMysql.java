@@ -29,17 +29,16 @@ public class CategoriasMysql {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    public String insertar(Categorias c) {
+    public void insertar(Categorias c) {
         try {
-	    String consulta ="INSERT INTO categorias (id_categoria, nombre, descripcion) VALUES ('"+
-	    c.getIdCategoria()+"','"+c.getNombre()+"','"+c.getDescripcion()+"')";
+	    String consulta ="INSERT INTO categorias (nombre, descripcion) VALUES ('"+c.getNombre()+"','"+c.getDescripcion()+"')";
 	    System.out.println(consulta);
             cn.insert(consulta);
-            return "..";
+            System.out.println("Correcto");
  		    
  		  } catch (SQLException e) {
  		            System.out.println(e.getMessage());
-                            return "er";
+                            System.out.println("Correcto");
  		   //JOptionPane.showMessageDialog(null, "No se Registro la persona");
            }
     }

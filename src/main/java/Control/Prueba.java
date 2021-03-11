@@ -6,6 +6,7 @@
 package Control;
 
 import Entidades.Categorias;
+import Entidades.Users;
 
 /**
  *
@@ -15,15 +16,17 @@ public class Prueba {
     
     public static void main(String args[]){
 		 System.out.println(Conexion.getConexion());
-                 Categorias c = new Categorias();
-                 
-                 c.setIdCategoria(1);
-                 c.setNombre("Sporte");
-                 c.setDescripcion("Mantenimiento preventivo y correctivo de equipos de computo");
-                 
-                 CategoriasMysql cat = new CategoriasMysql();
-                 
-                 cat.insertar(c);
+                 UsersMysql us = new UsersMysql();
+                 Users u = new Users();
+                u.setCedula("1090518420");
+                u.setNombres("Jose Luis");
+                u.setApellidos("Escalante Peñaranda");
+                u.setDireccion("Calle 01");
+                u.setTelefono("3022990472");
+                u.setCorreo("escalantep98@gmail.com");
+                u.setClave("jose98");
+             System.out.println(u.toString());
+                us.insertar(u);
                  
                 
 		
