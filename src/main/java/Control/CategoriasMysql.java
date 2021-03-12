@@ -6,7 +6,9 @@
 package Control;
 
 import Entidades.Categorias;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -16,17 +18,58 @@ import java.util.List;
 public class CategoriasMysql {
     
     private Conexion cn;
+    List<Categorias> cat;
+    
     
     public CategoriasMysql() {
         this.cn = Conexion.getConexion();
     }
 
     public List Listar() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String sql="select * from categorias";
+		cat = new ArrayList<Categorias>();
+		
+		try{
+			ResultSet res=cn.query(sql);
+			while(res.next()){
+                            Categorias ca = new Categorias();
+				ca.setIdCategoria(res.getInt(1));
+                                ca.setNombre(res.getString(2));
+                                ca.setDescripcion(res.getString(3));
+                                
+				cat.add(ca);
+                                System.out.println("Correcto");
+			}
+			res.close();
+                        return cat;
+
+		} catch (SQLException e) {
+			System.out.println("Error: Clase ClienteDaoImple, método obtener");
+                        System.out.println("Error");
+			e.printStackTrace();       
+		}
+			
+		return null;
     }
 
-    public Object obtener(Object t) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public Categorias obtener(int id) {
+        try{
+			ResultSet res=cn.query("SELECT * FROM categorias where id_categoria= "+id);
+			while(res.next()){
+				Categorias ca = new Categorias();
+                                ca.setIdCategoria(res.getInt("id_categoria"));
+                                ca.setNombre(res.getString("nombre"));
+                                ca.setDescripcion(res.getString("descripcion"));
+				return ca;
+			}
+			 res.close();
+
+	     	  
+   	  } catch (Exception e) {
+   		  System.out.println(e.getMessage());
+   	   //JOptionPane.showMessageDialog(null, "no se pudo consultar la Persona\n"+e);
+   	  }
+		return null;
     }
 
     public void insertar(Categorias c) {

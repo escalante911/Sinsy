@@ -62,16 +62,16 @@
          
           <%
             UsersMysql us = new UsersMysql();
-            Users u = new Users();
-            u.setCedula(request.getParameter("cedula"));
-            u.setNombres(request.getParameter("nombres"));
-            u.setApellidos(request.getParameter("apellidos"));
-            u.setDireccion(request.getParameter("direccion"));
-            u.setTelefono(request.getParameter("celular"));
-            u.setCorreo(request.getParameter("correo"));
-            u.setClave(request.getParameter("clave"));
-             System.out.println(u.toString());
-             if (request.getParameter("enviar") != null) {
+             if (request.getParameter("enviar") != null) { 
+                String cedula = request.getParameter("cedula");
+                String nombres = request.getParameter("nombres");
+                String apellidos = request.getParameter("apellidos");
+                String direccion = request.getParameter("direccion");
+                String telefono = request.getParameter("celular");
+                String correo = request.getParameter("correo");
+                String clave = request.getParameter("clave");
+              Users u = new Users(cedula, nombres, apellidos, direccion, telefono, correo, clave);
+                u.toString();
                 us.insertar(u);
                 System.out.println("Ya");
             }

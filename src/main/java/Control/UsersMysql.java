@@ -7,7 +7,9 @@ package Control;
 
 import java.util.List;
 import Entidades.Users;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 /**
  *
@@ -24,7 +26,33 @@ public class UsersMysql {
     }
     
     public List Listar() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String sql="select * from users";
+		us = new ArrayList<Users>();
+		
+		try{
+			ResultSet res=cn.query(sql);
+			while(res.next()){
+                            Users u = new Users();
+                                u.setCedula(res.getString(1));
+				u.setNombres(res.getString(2));
+                                u.setApellidos(res.getString(3));
+                                u.setDireccion(res.getString(4));
+                                u.setTelefono(res.getString(5));
+                                u.setCorreo(res.getString(6));
+                                u.setClave(res.getString(7));
+                                
+				us.add(u);
+                                System.out.println("Correcto");
+			}
+			res.close();
+                        return us;
+
+		} catch (SQLException e) {
+			System.out.println("Error: Clase ClienteDaoImple, método obtener");
+                        System.out.println("Error");
+			e.printStackTrace();       
+		}
+                return null;	
     }
 
     public Object obtener(Object t) {
